@@ -282,6 +282,64 @@
             "responses": [
                 "Scholarships offered by the college are: scholarship1, scholarship2 and scholarship3"
             ]
+        },
+        {
+            "tag": "waiting_list_cse",
+            "patterns": [
+                "What subjects are in CSE waiting list?",
+                "CSE waiting list subjects?",
+                "List out all subjects in CSE waiting list?",
+                "CSE has what subjects in waiting list?",
+                "What subjects are in computer science waiting list?",
+                "computer science waiting list subjects?",
+                "List out all subjects in computer science waiting list?",
+                "computer science has what subjects in waiting list?"
+                
+            ],
+            "responses": [
+                "The CSE department has the following subjects in its waiting list: S1, S2, S3"
+            ]
+        },
+        {
+            "tag": "waiting_list_mech",
+            "patterns": [
+                "What subjects are in Mech waiting list?",
+                "Mech waiting list subjects?",
+                "List out all subjects in Mech waiting list?",
+                "Mech has what subjects in waiting list?",
+                "What subjects are in mechanical waiting list?",
+                "mechanical waiting list subjects?",
+                "List out all subjects in mechanical waiting list?",
+                "mechanical has what subjects in waiting list?"
+                
+            ],
+            "responses": [
+                "The Mechanical department has the following subjects in its waiting list: S1, S2, S3"
+            ]
+        },
+        {
+            "tag": "waiting_list_civil",
+            "patterns": [
+                "What subjects are in Civil waiting list?",
+                "Civil waiting list subjects?",
+                "List out all subjects in Civil waiting list?",
+                "Civil has what subjects in waiting list?"       
+            ],
+            "responses": [
+                "The Civil department has the following subjects in its waiting list: S1, S2, S3"
+            ]
+        },
+        {
+            "tag": "waiting_list",
+            "patterns": [
+                "What subjects are in the waiting list?",
+                "waiting list subjects?",
+                "List out all subjects in waiting list?",
+                "what subjects in waiting list?"       
+            ],
+            "responses": [
+                "What department do you want the waiting list for?"
+            ]
         }
     ]
 }
