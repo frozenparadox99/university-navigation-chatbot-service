@@ -234,7 +234,10 @@
                 "What is my course name id is 12341234?",
                 "I am registered to which course id is 12341234?",
                 "My id is 12341234 what is my registered course?",
-                "What is the course for id 12341234"
+                "What is the course for id 12341234",
+                "12341234 is my id what is my course",
+                "12341234 has which course",
+                "12341234 gimme course"
             ],
             "responses": [
                 "Your courses are: Course1, Course2 and Course3"
