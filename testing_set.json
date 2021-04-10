@@ -1,0 +1,22 @@
+[
+    {
+        "q":"What are mech events?",
+        "a":"Mech hosts the following events\n1)Auto Race\n2)Engine Design"
+    },
+    {
+        "q":"What are the main college events?",
+        "a":"There are 2 main fest hosted. Tech Fest and Cultural and Sport Fest"
+    },
+    {
+        "q":"What are the events hosted by cse department?",
+        "a":"Computer hosts the following events\n1)Maze Design\n2)Dam Design"
+    },
+    {
+        "q":"Give fee structure",
+        "a":"For Undergrads $20000\nFor Grads $25000\nRoughly $5000 Sem"
+    },
+    {
+        "q":"WMy id is 12341234 what are my courses going to be next semester?",
+        "a":"Your next semester courses are: Course1, Course2 and Course3"
+    }
+]
