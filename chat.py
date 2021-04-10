@@ -42,6 +42,9 @@ while True:
     elif state == "course_registered":
         sentence += f' {previous_question}'
         print(sentence)
+    elif state == "course_details" or state == "next_semester_course_registered":
+        sentence += f' {previous_question}'
+        print(sentence)
     else:
         state = None
         previous_question = None
@@ -60,6 +63,12 @@ while True:
         state = "faculty"
     elif tag == "course_registered":
         state = "course_registered"
+        previous_question = " ".join(sentence)
+    elif tag == "course_details":
+        state = "course_details"
+        previous_question = " ".join(sentence)
+    elif tag == "next_semester_course_registered":
+        state = "next_semester_course_registered"
         previous_question = " ".join(sentence)
     else:
         state = None
