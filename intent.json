@@ -1,0 +1,284 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hey :-) How Can I help you?",
+                "Hello, thanks for visiting How Can I help you?",
+                "Hi there, what can I do for you? How Can I help you?",
+                "Hi there, how can I help?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye"
+            ],
+            "responses": [
+                "See you later, thanks for visiting. For more info visit our site https://manipal.edu/mu.html",
+                "Have a nice day. For more info visit our site https://manipal.edu/mu.html",
+                "Bye! Come back again soon. For more info visit our site https://manipal.edu/mu.html"
+            ]
+        },
+        {
+            "tag": "Events",
+            "patterns": [
+                "What events are hosted?",
+                "Are there any College Fest?",
+                "What are the main college events",
+                "How many college events are there",
+                "College Fest?",
+                "College Festivals?"
+            ],
+            "responses": [
+                "There are 2 main fest hosted. Tech Fest and Cultural and Sport Fest"
+            ]
+        },
+        {
+            "tag": "ECE_Dept_Events",
+            "patterns": [
+                "What events are hosted by ECE",
+                "What events are hosted by ece department",
+                "Does ECE host events?",
+                "ECE events"
+            ],
+            "responses": [
+                "ECE hosts the following events\n1)Robo Wars\n2)Circuit Breaker"
+            ]
+        },
+        {
+            "tag": "Mech_Dept_Events",
+            "patterns": [
+                "What events are hosted by Mech",
+                "What events are hosted by mechanical department",
+                "Does Mech host events?",
+                "Does mechanical host events?",
+                "Mech events",
+                "mechanical events"
+            ],
+            "responses": [
+                "Mech hosts the following events\n1)Auto Race\n2)Engine Design"
+            ]
+        },
+        {
+            "tag": "Civil_Dept_Events",
+            "patterns": [
+                "What events are hosted by civil",
+                "What events are hosted by civil department",
+                "Does civil host events?",
+                "Does civil host events?",
+                "civil department events",
+                "civil events"
+            ],
+            "responses": [
+                "Civil hosts the following events\n1)Maze Design\n2)Dam Design"
+            ]
+        },
+        {
+            "tag": "Computer_Dept_Events",
+            "patterns": [
+                "What events are hosted by Computer Science",
+                "What events are hosted by Computer Science department",
+                "Does Computer Science host events?",
+                "Does Computer Science host events?",
+                "Computer Science department events",
+                "Computer Science events",
+                "What events are hosted by CSE",
+                "What events are hosted by CSE department",
+                "Does CSE host events?",
+                "Does CSE host events?",
+                "CSE department events",
+                "CSE events"
+            ],
+            "responses": [
+                "Computer hosts the following events\n1)Maze Design\n2)Dam Design"
+            ]
+        },
+        {
+            "tag": "fee",
+            "patterns": [
+                "What is the fee structure for graduates?",
+                "What is the fee structure for undergraduates?",
+                "What is the fee structure?",
+                "What is the annual Expense?",
+                "What is the expense per sem?"
+            ],
+            "responses": [
+                "For Undergrads $20000\nFor Grads $25000\nRoughly $5000 Sem"
+            ]
+        },
+        {
+            "tag": "department_faculty",
+            "patterns": [
+                "Show Faculty list",
+                "Show Faculty details",
+                "Show teacher list",
+                "Show teacher details",
+                "Show professor details",
+                "Show professor list"
+            ],
+            "responses": [
+                "Select Department"
+            ]
+        },
+        {
+            "tag": "funny",
+            "patterns": [
+                "Tell me a joke!",
+                "Tell me something funny!",
+                "Do you know a joke?"
+            ],
+            "responses": [
+                "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+                "What did the buffalo say when his son left for college? Bison."
+            ]
+        },
+        {
+            "tag": "course_details_cse",
+            "patterns": [
+                "What are CSE course details?",
+                "Give me the CSE course plan?",
+                "CSE course details?",
+                "Details of CSE course?",
+                "What happens in the CSE course?",
+                "Give me information about the CSE course",
+                "What are computer science course details?",
+                "Give me the computer science course plan?",
+                "computer science course details?",
+                "Details of computer science course?",
+                "What happens in the computer science course?",
+                "Give me information about the computer science course"
+            ],
+            "responses": [
+                "The CSE course has subjects like: Subject1, Subject2 and Subject3",
+                "CSE course plan: Subject1, Subject2 and Subject3"
+            ]
+        },
+        {
+            "tag": "course_details_mech",
+            "patterns": [
+                "What are MECH course details?",
+                "Give me the MECH course plan?",
+                "MECH course details?",
+                "Details of MECH course?",
+                "What happens in the MECH course?",
+                "Give me information about the MECH course",
+                "What are mechanical course details?",
+                "Give me the mechanical course plan?",
+                "Mechanical course details?",
+                "Details of mechanical course?",
+                "What happens in the mechanical course?",
+                "Give me information about the mechanical course"
+            ],
+            "responses": [
+                "The MECH course has subjects like: Subject1, Subject2 and Subject3",
+                "MECH course plan: Subject1, Subject2 and Subject3"
+            ]
+        },
+        {
+            "tag": "course_details_civil",
+            "patterns": [
+                "What are civil course details?",
+                "Give me the civil course plan?",
+                "civil course details?",
+                "Details of civil course?",
+                "What happens in the civil course?",
+                "Give me information about the civil course"
+            ],
+            "responses": [
+                "The civil course has subjects like: Subject1, Subject2 and Subject3",
+                "civil course plan: Subject1, Subject2 and Subject3"
+            ]
+        },
+        {
+            "tag": "course_details",
+            "patterns": [
+                "What are course details?",
+                "Give me the course plan?",
+                "Course details?",
+                "Details of course?",
+                "What happens in the course?",
+                "Give me information about the course"
+            ],
+            "responses": [
+                "Which course are you enrolled in?"
+            ]
+        },
+        {
+            "tag": "course_registered",
+            "patterns": [
+                "Which course am I registered to?",
+                "What is my course?",
+                "What is my course name?",
+                "I am registered to which course?"
+            ],
+            "responses": [
+                "What is your id?"
+            ]
+        },
+        {
+            "tag": "course_registered_under_given_student_id",
+            "patterns": [
+                "Which course am I registered id is 12341234?",
+                "What is my course id is 12341234?",
+                "What is my course name id is 12341234?",
+                "I am registered to which course id is 12341234?",
+                "My id is 12341234 what is my registered course?",
+                "What is the course for id 12341234"
+            ],
+            "responses": [
+                "Your courses are: Course1, Course2 and Course3"
+            ]
+        },
+        {
+            "tag": "next_semester_course_registered",
+            "patterns": [
+                "Which course am I registered to next semester?",
+                "What are my courses next semester?",
+                "What are my next semester course names?",
+                "I am registered to which course next semester?"
+            ],
+            "responses": [
+                "What is your id for next sem courses?"
+            ]
+        },
+        {
+            "tag": "next_semester_course_registered_under_given_student_id",
+            "patterns": [
+                "Which course am I registered to next semester id is 12341234?",
+                "What are my courses next semester id is 12341234?",
+                "What are my next semester course names id is 12341234?",
+                "I am registered to which course next semester id is 12341234?",
+                "My id is 12341234 what is my registered course for next semester?",
+                "What is the course for id 12341234 next semester"
+            ],
+            "responses": [
+                "Your next semester courses are: Course1, Course2 and Course3"
+            ]
+        },
+        {
+            "tag": "scholarships",
+            "patterns": [
+                "What scholarships are offered?",
+                "College offers what all scholarships?",
+                "Scholarships types?",
+                "List of scholarships?",
+                "What are the scholarships in the college?",
+                "What are the scholarships in the department?"
+            ],
+            "responses": [
+                "Scholarships offered by the college are: scholarship1, scholarship2 and scholarship3"
+            ]
+        }
+    ]
+}
