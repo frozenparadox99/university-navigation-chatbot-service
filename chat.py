@@ -1,5 +1,6 @@
 import random
 import json
+import sqlite3
 
 import torch
 
@@ -7,6 +8,17 @@ from model import NeuralNet
 from nltk_util import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+connection = sqlite3.connect('student_courses.db')
+cursor = connection.cursor()
+
+command1 = """CREATE TABLE IF NOT EXISTS 
+student_courses(student_id INTEGER PRIMARY KEY, courses TEXT)"""
+
+cursor.execute(command1)
+
+cursor.execute("INSERT INTO student_courses VALUES (17090,'Course A, Course B')")
+cursor.execute("INSERT INTO student_courses VALUES (17091,'Course C, Course D')")
+cursor.execute("INSERT INTO student_courses VALUES (17092,'Course E, Course F')")
 
 with open('intent.json', 'r') as json_data:
     intents = json.load(json_data)
@@ -30,8 +42,9 @@ print("Let's chat! (type 'quit' to exit)")
 state = None
 previous_question = None
 
-while True:
 
+while True:
+    student_id = 0
     sentence = input("You: ")
     if sentence == "quit":
         break
@@ -40,7 +53,8 @@ while True:
         sentence += " faculty list"
         print(sentence)
     elif state == "course_registered":
-        sentence += f' {previous_question}'
+        student_id = int(sentence)
+        sentence = f'12341234 {previous_question}'
         print(sentence)
     elif state == "course_details" or state == "next_semester_course_registered" or state == "waiting_list":
         sentence += f' {previous_question}'
@@ -82,7 +96,15 @@ while True:
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                current_output = random.choice(intent['responses'])    
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
+                current_output = random.choice(intent['responses']) 
+                if current_output == "Your courses are: Course1, Course2 and Course3":
+                    cursor.execute(f'SELECT courses FROM student_courses WHERE student_id={student_id}')
+                    results = cursor.fetchall()
+                    if len(results) == 0:
+                        print(f"{bot_name}: Invalid Id")
+                    else:
+                        print(f"{bot_name}: {results[0][0]}")  
+                else:
+                    print(f"{bot_name}: {random.choice(intent['responses'])}")
     else:
         print(f"{bot_name}: I do not understand...")
