@@ -39,7 +39,7 @@ for item in test_data:
     total_cases_till_now += 1
     sentence = item["q"]
     answer = item["a"]
-    
+
     sentence = tokenize(sentence)
     X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
@@ -52,13 +52,13 @@ for item in test_data:
 
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
-    epoch +=1
+    epoch += 1
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                current_output = random.choice(intent['responses'])   
+                current_output = random.choice(intent['responses'])
                 if current_output == answer:
                     correct_cases += 1
-                
-                
-    print(f'Epoch [{epoch}/{len(test_data)}], Accuracy: {correct_cases/total_cases_till_now}')
+
+    print(
+        f'Epoch [{epoch}/{len(test_data)}], Accuracy: {correct_cases/total_cases_till_now}')

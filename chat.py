@@ -16,9 +16,12 @@ student_courses(student_id INTEGER PRIMARY KEY, courses TEXT)"""
 
 cursor.execute(command1)
 
-cursor.execute("INSERT INTO student_courses VALUES (17090,'Course A, Course B')")
-cursor.execute("INSERT INTO student_courses VALUES (17091,'Course C, Course D')")
-cursor.execute("INSERT INTO student_courses VALUES (17092,'Course E, Course F')")
+cursor.execute(
+    "INSERT INTO student_courses VALUES (17090,'Course A, Course B')")
+cursor.execute(
+    "INSERT INTO student_courses VALUES (17091,'Course C, Course D')")
+cursor.execute(
+    "INSERT INTO student_courses VALUES (17092,'Course E, Course F')")
 
 with open('intent.json', 'r') as json_data:
     intents = json.load(json_data)
@@ -62,7 +65,7 @@ while True:
     else:
         state = None
         previous_question = None
-    
+
     sentence = tokenize(sentence)
     X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
@@ -96,14 +99,15 @@ while True:
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                current_output = random.choice(intent['responses']) 
+                current_output = random.choice(intent['responses'])
                 if current_output == "Your courses are: Course1, Course2 and Course3":
-                    cursor.execute(f'SELECT courses FROM student_courses WHERE student_id={student_id}')
+                    cursor.execute(
+                        f'SELECT courses FROM student_courses WHERE student_id={student_id}')
                     results = cursor.fetchall()
                     if len(results) == 0:
                         print(f"{bot_name}: Invalid Id")
                     else:
-                        print(f"{bot_name}: {results[0][0]}")  
+                        print(f"{bot_name}: {results[0][0]}")
                 else:
                     print(f"{bot_name}: {random.choice(intent['responses'])}")
     else:

@@ -6,6 +6,10 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
+# from keras.models import Sequential
+# from keras.layers import Dense, Activation, Dropout
+# from keras.optimizers import SGD
+
 from nltk_util import bag_of_words, tokenize, stem
 from model import NeuralNet
 
@@ -121,5 +125,3 @@ data = {
 
 FILE = "data.pth"
 torch.save(data, FILE)
-
-print(f'training complete. file saved to {FILE}')

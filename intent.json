@@ -150,7 +150,6 @@
                 "Show computer science professor details",
                 "Show computer science professor list",
                 "Who teaches computer science?"
-
             ],
             "responses": [
                 "Cse is taught by: Teacher A, Techaer B"
@@ -319,7 +318,6 @@
                 "computer science waiting list subjects?",
                 "List out all subjects in computer science waiting list?",
                 "computer science has what subjects in waiting list?"
-                
             ],
             "responses": [
                 "The CSE department has the following subjects in its waiting list: S1, S2, S3"
@@ -336,7 +334,6 @@
                 "mechanical waiting list subjects?",
                 "List out all subjects in mechanical waiting list?",
                 "mechanical has what subjects in waiting list?"
-                
             ],
             "responses": [
                 "The Mechanical department has the following subjects in its waiting list: S1, S2, S3"
@@ -348,7 +345,7 @@
                 "What subjects are in Civil waiting list?",
                 "Civil waiting list subjects?",
                 "List out all subjects in Civil waiting list?",
-                "Civil has what subjects in waiting list?"       
+                "Civil has what subjects in waiting list?"
             ],
             "responses": [
                 "The Civil department has the following subjects in its waiting list: S1, S2, S3"
@@ -360,7 +357,7 @@
                 "What subjects are in the waiting list?",
                 "waiting list subjects?",
                 "List out all subjects in waiting list?",
-                "what subjects in waiting list?"       
+                "what subjects in waiting list?"
             ],
             "responses": [
                 "What department do you want the waiting list for?"
