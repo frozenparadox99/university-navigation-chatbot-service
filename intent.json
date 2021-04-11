@@ -125,10 +125,35 @@
                 "Show teacher list",
                 "Show teacher details",
                 "Show professor details",
-                "Show professor list"
+                "Show professor list",
+                "list of faculty",
+                "faculty list"
             ],
             "responses": [
                 "Select Department"
+            ]
+        },
+        {
+            "tag": "department_faculty_cse",
+            "patterns": [
+                "Show Faculty list cse",
+                "Show cse Faculty details",
+                "Show teacher list of cse",
+                "Show cse teacher details",
+                "Show cse professor details",
+                "Show cse professor list",
+                "Who teaches cse?",
+                "Show Faculty list computer science",
+                "Show computer science Faculty details",
+                "Show teacher list of computer science",
+                "Show computer science teacher details",
+                "Show computer science professor details",
+                "Show computer science professor list",
+                "Who teaches computer science?"
+
+            ],
+            "responses": [
+                "Cse is taught by: Teacher A, Techaer B"
             ]
         },
         {
