@@ -9,3 +9,6 @@
 ### ChatBot
 `python chat.py`
 
+### GUI App
+`python .\GUI_APP\app.py`
+
