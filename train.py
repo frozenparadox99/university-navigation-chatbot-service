@@ -2,29 +2,29 @@ import numpy as np
 import random
 import json
 
+import matplotlib.pyplot as plt
+
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-# from keras.models import Sequential
-# from keras.layers import Dense, Activation, Dropout
-# from keras.optimizers import SGD
-
 from nltk_util import bag_of_words, tokenize, stem
 from model import NeuralNet
 
-with open('intent.json', 'r') as f:
+with open("intent.json", "r") as f:
     intents = json.load(f)
+
+plt.style.use("seaborn")
 
 all_words = []
 tags = []
 xy = []
 
-for intent in intents['intents']:
-    tag = intent['tag']
+for intent in intents["intents"]:
+    tag = intent["tag"]
 
     tags.append(tag)
-    for pattern in intent['patterns']:
+    for pattern in intent["patterns"]:
 
         w = tokenize(pattern)
 
@@ -33,7 +33,7 @@ for intent in intents['intents']:
         xy.append((w, tag))
 
 
-ignore_words = ['?', '.', '!']
+ignore_words = ["?", ".", "!"]
 all_words = [stem(w) for w in all_words if w not in ignore_words]
 
 all_words = sorted(set(all_words))
@@ -60,7 +60,7 @@ y_train = np.array(y_train)
 
 num_epochs = 1000
 batch_size = 8
-learning_rate = 0.001
+learning_rate = 0.01
 input_size = len(X_train[0])
 hidden_size = 8
 output_size = len(tags)
@@ -68,7 +68,6 @@ print(input_size, output_size)
 
 
 class ChatDataset(Dataset):
-
     def __init__(self):
         self.n_samples = len(X_train)
         self.x_data = X_train
@@ -81,13 +80,13 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 
+#
 dataset = ChatDataset()
-train_loader = DataLoader(dataset=dataset,
-                          batch_size=batch_size,
-                          shuffle=True,
-                          num_workers=0)
+train_loader = DataLoader(
+    dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=0
+)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = NeuralNet(input_size, hidden_size, output_size).to(device)
 
@@ -95,6 +94,7 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
+loss_list = []
 
 for epoch in range(num_epochs):
     for (words, labels) in train_loader:
@@ -108,11 +108,13 @@ for epoch in range(num_epochs):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+    if (epoch + 1) % 10 == 0:
+        loss_list.append(loss.item())
+    if (epoch + 1) % 100 == 0:
+        print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
 
-    if (epoch+1) % 100 == 0:
-        print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
 
-print(f'final loss: {loss.item():.4f}')
+print(f"final loss: {loss.item():.4f}")
 
 data = {
     "model_state": model.state_dict(),
@@ -120,8 +122,14 @@ data = {
     "hidden_size": hidden_size,
     "output_size": output_size,
     "all_words": all_words,
-    "tags": tags
+    "tags": tags,
 }
 
 FILE = "data.pth"
 torch.save(data, FILE)
+
+plt.plot(loss_list)
+plt.title("Epoch vs Loss (MLP)")
+plt.xlabel("Epochs")
+plt.ylabel("Cross Entropy Loss")
+plt.show()

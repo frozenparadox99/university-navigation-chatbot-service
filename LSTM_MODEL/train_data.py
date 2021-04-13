@@ -8,29 +8,32 @@ import nltk
 import random
 import numpy as np
 from nltk.stem import WordNetLemmatizer
+import matplotlib.pyplot as plt
+
+plt.style.use("seaborn")
+
 lemmatizer = WordNetLemmatizer()
 
 
-with open('intent.json', 'r') as f:
+with open("intent.json", "r") as f:
     intents = json.load(f)
 
 all_words = []
 tags = []
 xy = []
-ignore_words = ['?', '!', '.', ',']
+ignore_words = ["?", "!", ".", ","]
 
-for intent in intents['intents']:
-    for pattern in intent['patterns']:
+for intent in intents["intents"]:
+    for pattern in intent["patterns"]:
 
         w = nltk.word_tokenize(pattern)
 
         all_words.extend(w)
-        tags.append(intent['tag'])
-        xy.append((w, intent['tag']))
+        tags.append(intent["tag"])
+        xy.append((w, intent["tag"]))
 
 
-words = [lemmatizer.lemmatize(w.lower())
-         for w in all_words if w not in ignore_words]
+words = [lemmatizer.lemmatize(w.lower()) for w in all_words if w not in ignore_words]
 words = sorted(list(set(words)))
 classes = sorted(list(set(tags)))
 # pickle.dump(words, open('words.pkl', 'wb'))
@@ -46,8 +49,7 @@ for doc in xy:
     # list of tokenized words for the pattern
     pattern_words = doc[0]
     # lemmatize each word - create base word, in attempt to represent related words
-    pattern_words = [lemmatizer.lemmatize(
-        word.lower()) for word in pattern_words]
+    pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
     # create our bag of words array with 1, if word match found in current pattern
     for w in words:
         bag.append(1) if w in pattern_words else bag.append(0)
@@ -67,20 +69,36 @@ learning_rate = 0.001
 # Create model - 3 layers. First layer 128 neurons, second layer 64 neurons and 3rd output layer contains number of neurons
 # equal to number of intents to predict output intent with softmax
 model = Sequential()
-model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation="relu"))
 model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
+model.add(Dense(64, activation="relu"))
 model.add(Dropout(0.5))
-model.add(Dense(len(train_y[0]), activation='softmax'))
+model.add(Dense(len(train_y[0]), activation="softmax"))
 
 # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
 sgd = SGD(lr=learning_rate, decay=1e-6, momentum=0.9, nesterov=True)
-model.compile(loss='categorical_crossentropy',
-              optimizer=sgd, metrics=['accuracy'])
+model.compile(loss="categorical_crossentropy", optimizer=sgd, metrics=["accuracy"])
 
 # fitting and saving the model
-hist = model.fit(np.array(train_x), np.array(train_y),
-                 epochs=500, batch_size=8, verbose=1)
-model.save('chatbot_model.h5', hist)
+hist = model.fit(
+    np.array(train_x), np.array(train_y), epochs=500, batch_size=8, verbose=1
+)
+acc = hist.history["accuracy"]
+
+loss = hist.history["loss"]
+# val_loss = hist.history["val_loss"]
+plt.title("Epoch vs Accuracy (LSTM)")
+plt.xlabel("Epochs")
+plt.ylabel("Accuracy")
+plt.plot(acc)
+plt.show()
+
+plt.title("Epoch vs Loss (LSTM)")
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.plot(loss)
+plt.show()
+
+model.save("chatbot_model.h5", hist)
 
 print("model created")
